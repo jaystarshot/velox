@@ -342,14 +342,13 @@ void IcebergSplitReaderBenchmark::readSingleColumn(
             hiveConfig,
             rowType,
             ioStats,
-            fsStats,
             &fileHandleFactory,
             nullptr,
             scanSpec);
 
     std::shared_ptr<random::RandomSkipTracker> randomSkip;
     icebergSplitReader->configureReaderOptions(randomSkip);
-    icebergSplitReader->prepareSplit(nullptr, runtimeStats_);
+    icebergSplitReader->prepareSplit(nullptr, runtimeStats_, nullptr);
 
     // Filter range is generated from a small sample data of 4096 rows. So the
     // upperBound and lowerBound are introduced to estimate the result size.

@@ -132,7 +132,12 @@ class HiveDataSinkTest : public exec::test::HiveConnectorTestBase {
         connectorPool_.get(),
         connectorSessionProperties_.get(),
         nullptr,
+<<<<<<< HEAD
         common::PrefixSortConfig(),
+=======
+        nullptr,
+        exec::test::defaultPrefixSortConfig(),
+>>>>>>> 0f38df244 (Add Identity struct and pass it with Query context)
         nullptr,
         nullptr,
         "query.HiveDataSinkTest",
@@ -745,6 +750,7 @@ DEBUG_ONLY_TEST_F(HiveDataSinkTest, memoryReclaim) {
           opPool_.get(),
           connectorPool_.get(),
           connectorSessionProperties_.get(),
+          nullptr,
           spillConfig.get(),
           common::PrefixSortConfig(),
           nullptr,
@@ -761,7 +767,12 @@ DEBUG_ONLY_TEST_F(HiveDataSinkTest, memoryReclaim) {
           connectorPool_.get(),
           connectorSessionProperties_.get(),
           nullptr,
+<<<<<<< HEAD
           common::PrefixSortConfig(),
+=======
+          nullptr,
+          exec::test::defaultPrefixSortConfig(),
+>>>>>>> 0f38df244 (Add Identity struct and pass it with Query context)
           nullptr,
           nullptr,
           "query.HiveDataSinkTest",
@@ -886,6 +897,7 @@ TEST_F(HiveDataSinkTest, memoryReclaimAfterClose) {
           opPool_.get(),
           connectorPool_.get(),
           connectorSessionProperties_.get(),
+          nullptr,
           spillConfig.get(),
           common::PrefixSortConfig(),
           nullptr,
@@ -902,7 +914,12 @@ TEST_F(HiveDataSinkTest, memoryReclaimAfterClose) {
           connectorPool_.get(),
           connectorSessionProperties_.get(),
           nullptr,
+<<<<<<< HEAD
           common::PrefixSortConfig(),
+=======
+          nullptr,
+          exec::test::defaultPrefixSortConfig(),
+>>>>>>> 0f38df244 (Add Identity struct and pass it with Query context)
           nullptr,
           nullptr,
           "query.HiveDataSinkTest",
@@ -1092,6 +1109,7 @@ DEBUG_ONLY_TEST_F(HiveDataSinkTest, sortWriterFailureTest) {
       opPool_.get(),
       connectorPool_.get(),
       connectorSessionProperties_.get(),
+      nullptr,
       spillConfig.get(),
       common::PrefixSortConfig(),
       nullptr,

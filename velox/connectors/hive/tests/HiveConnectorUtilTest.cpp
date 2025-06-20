@@ -52,7 +52,12 @@ TEST_F(HiveConnectorUtilTest, configureReaderOptions) {
       pool_.get(),
       &sessionProperties,
       nullptr,
+<<<<<<< HEAD
       common::PrefixSortConfig(),
+=======
+      nullptr,
+      exec::test::defaultPrefixSortConfig(),
+>>>>>>> 0f38df244 (Add Identity struct and pass it with Query context)
       nullptr,
       nullptr,
       "query.HiveConnectorUtilTest",
