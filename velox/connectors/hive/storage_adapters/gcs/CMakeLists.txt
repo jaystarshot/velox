@@ -24,7 +24,23 @@ if(VELOX_ENABLE_GCS)
     add_subdirectory(tests)
   endif()
 
+<<<<<<< HEAD
   if(${VELOX_ENABLE_EXAMPLES})
     add_subdirectory(examples)
   endif()
+=======
+    velox_sources(velox_gcs PRIVATE GcsFileSystem.cpp GcsReadFile.cpp GcsWriteFile.cpp GcsUtil.cpp)
+    velox_link_libraries(velox_gcs velox_dwio_common Folly::folly
+                       google-cloud-cpp::storage_grpc velox_alluxio)
+
+#  if(${VELOX_BUILD_TESTING})
+#    add_subdirectory(tests)
+#  endif()
+#
+#  if(${VELOX_ENABLE_BENCHMARKS})
+#    add_subdirectory(benchmark)
+#  endif()
+#
+#  add_subdirectory(examples)
+>>>>>>> 1164f489f (changes for grpc bidi)
 endif()

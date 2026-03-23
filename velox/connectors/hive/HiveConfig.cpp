@@ -98,6 +98,10 @@ std::optional<std::string> HiveConfig::gcsAuthAccessTokenProvider() const {
       config_->get<std::string>(kGcsAuthAccessTokenProvider));
 }
 
+bool HiveConfig::gcsReadAsyncEnabled() const {
+  return config_->get<bool>(kGcsReadAsyncEnabled, true);
+}
+
 bool HiveConfig::isOrcUseColumnNames(const config::ConfigBase* session) const {
   return session->get<bool>(
       kOrcUseColumnNamesSession, config_->get<bool>(kOrcUseColumnNames, false));

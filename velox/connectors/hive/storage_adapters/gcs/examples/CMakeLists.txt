@@ -23,3 +23,15 @@ target_link_libraries(
   velox_dwio_common_exception
   velox_exec
 )
+
+add_executable(velox_gcs_async_read_benchmark GcsAsyncReadBenchmark.cpp)
+target_link_libraries(
+  velox_gcs_async_read_benchmark
+  Folly::folly
+  velox_file
+  velox_gcs
+  velox_core
+  velox_hive_connector
+  velox_dwio_common_exception
+  velox_exec
+)

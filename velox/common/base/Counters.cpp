@@ -683,5 +683,125 @@ void registerVeloxMetrics() {
   // The number of times that storage IOs get throttled in a storage cluster.
   DEFINE_METRIC(
       kMetricStorageGlobalThrottled, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSRead0To1kb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSRead1kbTo1mb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSRead1mbTo10mb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSRead10mb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricHDFSRead0To1kb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricHDFSRead1kbTo1mb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricHDFSRead1mbTo10mb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricHDFSRead10mb, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricHDFSReadSum, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricHDFSReadLatency, facebook::velox::StatType::AVG);
+
+  DEFINE_METRIC(kMetricGCSReadSum, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricGCSReadLatency, facebook::velox::StatType::AVG);
+
+  DEFINE_METRIC(kMetricGCSPreadCount, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSPreadBufCount, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSPreadVCount, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSPreadVBufferListSizeAvg, facebook::velox::StatType::AVG);
+
+  DEFINE_METRIC(kMetricGCSPreadVBytesRead, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricGCSPreadVWastedBytes, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricGCSBidiReadCount, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(kMetricGCSBidiOpenCount, facebook::velox::StatType::COUNT);
+
+  DEFINE_METRIC(
+      kMetricParquetClacKmsRetry1Count, facebook::velox::StatType::COUNT);
+  DEFINE_METRIC(
+      kMetricParquetClacKmsRetry2Count, facebook::velox::StatType::COUNT);
+  DEFINE_METRIC(
+      kMetricParquetClacKmsRetry3Count, facebook::velox::StatType::COUNT);
+  DEFINE_METRIC(
+      kMetricParquetClacKmsRetry4Count, facebook::velox::StatType::COUNT);
+  DEFINE_METRIC(
+      kMetricParquetClacKmsFailureCount, facebook::velox::StatType::COUNT);
+
+  // The number of times that KMS keys are found in cache.
+  DEFINE_METRIC(
+      kMetricParquetClacKmsCacheHitCount, facebook::velox::StatType::COUNT);
+
+  // The number of times that KMS keys are not found in cache and result in calling KMS
+  DEFINE_METRIC(
+      kMetricParquetClacKmsCacheMissCount, facebook::velox::StatType::COUNT);
+
+  // The number of times KMS key cache runs cleanup
+  DEFINE_METRIC(
+      kMetricParquetClacKmsCacheCleanupCount, facebook::velox::StatType::COUNT);
+
+  // The number of the kms requests
+  DEFINE_METRIC(
+      kMetricParquetClacKmsRequestCount, facebook::velox::StatType::COUNT);
+
+  // The latency of the kms requests
+  DEFINE_METRIC(
+      kMetricParquetClacKmsRequestLatency, facebook::velox::StatType::AVG);
+
+  // The distribution of Parquet footer length in bytes in range of [0, 256MB] with 100 buckets.
+  // It is configured to report the length at P50, P90, P99, and P100 percentiles.
+  DEFINE_HISTOGRAM_METRIC(
+      kMetricParquetFooterLengthBytes,
+      2'621'440, // 2.5MB bucket width
+      0,
+      268'435'456, // 256MB max
+      50,
+      90,
+      99,
+      100);
+
+  // The distribution of Parquet metadata size in bytes in range of [0, 500MB] with 20 buckets.
+  // It is configured to report the size at P50, P90, P99, and P100 percentiles.
+  DEFINE_HISTOGRAM_METRIC(
+      kMetricParquetMetadataSizeBytes,
+      26'214'400, // 25MB bucket width
+      0,
+      524'288'000, // 500MB max
+      50,
+      90,
+      99,
+      100);
+
+  // The ratio of the Parquet footer length to the Parquet metadata size
+  DEFINE_METRIC(kMetricParquetFooterRatio, facebook::velox::StatType::AVG);
+
+  DEFINE_METRIC(kMetricParquetFooterThriftSum, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricParquetFooterThriftNegSum, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricParquetClacFooterThriftSum, facebook::velox::StatType::SUM);
+
+  DEFINE_METRIC(kMetricParquetClacFooterThriftNegSum, facebook::velox::StatType::SUM);
+
+  // The total size of columns being cleared
+  DEFINE_METRIC(kMetricParquetTotalColumnsSizeCleared, facebook::velox::StatType::SUM);
+
+  // Parquet encoding metrics
+  DEFINE_METRIC(kMetricParquetEncodingPlain, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingPlainDictionary, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingRle, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingBitPacked, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingDeltaBinaryPacked, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingDeltaLengthByteArray, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingDeltaByteArray, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingRleDictionary, facebook::velox::StatType::AVG);
+  DEFINE_METRIC(kMetricParquetEncodingByteStreamSplit, facebook::velox::StatType::AVG);
 }
 } // namespace facebook::velox

@@ -663,7 +663,11 @@ endif()
 
 if(VELOX_ENABLE_GCS)
   velox_set_source(google_cloud_cpp_storage)
+<<<<<<< HEAD
   velox_resolve_dependency(google_cloud_cpp_storage CONFIG 2.22.0 REQUIRED)
+=======
+  velox_resolve_dependency(google_cloud_cpp_storage CONFIG 2.37.0 REQUIRED)
+>>>>>>> 1164f489f (changes for grpc bidi)
   add_definitions(-DVELOX_ENABLE_GCS)
 endif()
 

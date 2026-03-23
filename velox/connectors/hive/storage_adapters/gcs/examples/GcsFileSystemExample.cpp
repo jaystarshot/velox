@@ -49,7 +49,7 @@ int main(int argc, char** argv) {
   std::string bucket;
   std::string object;
   setBucketAndKeyFromGcsPath(FLAGS_gcs_path, bucket, object);
-  filesystems::GcsFileSystem gcfs(bucket, newConfiguration());
+  filesystems::GcsFileSystem gcfs(newConfiguration());
   gcfs.initializeClient();
   std::cout << "Opening file for read " << FLAGS_gcs_path << std::endl;
   std::unique_ptr<ReadFile> file_read = gcfs.openFileForRead(FLAGS_gcs_path);

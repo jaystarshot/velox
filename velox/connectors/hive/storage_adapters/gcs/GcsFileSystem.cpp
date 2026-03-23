@@ -28,6 +28,7 @@
 #include <memory>
 #include <stdexcept>
 
+#include <google/cloud/storage/async/client.h>
 #include <google/cloud/storage/client.h>
 
 namespace facebook::velox {
@@ -138,17 +139,32 @@ class GcsFileSystem::Impl {
           << "Config hive.gcs.json-key-file-path is empty or key file path not found";
     }
 
-    client_ = std::make_shared<gcs::Client>(options);
+    client_ = std::make_shared<gcs::Client>(gcs::MakeGrpcClient(options));
+    if (hiveConfig_->gcsReadAsyncEnabled()) {
+      asyncClient_ = std::make_shared<
+          google::cloud::storage_experimental::AsyncClient>(options);
+      LOG(INFO) << "GCS async bidi read API enabled.";
+    }
   }
 
   std::shared_ptr<gcs::Client> getClient() const {
     return client_;
   }
 
+
+  std::shared_ptr<google::cloud::storage_experimental::AsyncClient>
+  getAsyncClient() const {
+    return asyncClient_;
+  }
+
+
  private:
   const std::string bucket_;
   const std::shared_ptr<HiveConfig> hiveConfig_;
   std::shared_ptr<gcs::Client> client_;
+  std::shared_ptr<google::cloud::storage_experimental::AsyncClient>
+      asyncClient_;
+
 };
 
 GcsFileSystem::GcsFileSystem(
@@ -167,6 +183,11 @@ std::unique_ptr<ReadFile> GcsFileSystem::openFileForRead(
     const FileOptions& options) {
   const auto gcspath = gcsPath(path);
   auto gcsfile = std::make_unique<GcsReadFile>(gcspath, impl_->getClient());
+
+  // Fallback for all other cases: use a regular GCS file reader.
+  VLOG(1) << "GCS: Using regular GCS reader for path=" << path;
+  auto gcsfile = std::make_unique<GcsReadFile>(
+      gcspath, impl_->getClient(), impl_->getAsyncClient());
   gcsfile->initialize(options);
   return gcsfile;
 }

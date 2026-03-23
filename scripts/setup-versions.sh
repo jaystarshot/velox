@@ -54,7 +54,14 @@ ABSEIL_VERSION="20240116.2"
 GRPC_VERSION="v1.48.1"
 CRC32_VERSION="1.1.2"
 NLOHMAN_JSON_VERSION="v3.11.3"
+<<<<<<< HEAD
 GOOGLE_CLOUD_CPP_VERSION="v2.22.0"
+=======
+# HEAD: Using newer Google Cloud C++ v2.35.0 (upstream has v2.22.0)
+GOOGLE_CLOUD_CPP_VERSION="v2.37.0"
+# Upstream: Using newer Hadoop 3.3.6 (HEAD had 3.3.0)
+# Note: Not used by setup-uber.sh (only install_hdfs/install_adapters use this)
+>>>>>>> 1164f489f (changes for grpc bidi)
 HADOOP_VERSION="3.3.6"
 AZURE_SDK_VERSION="12.8.0"
 MINIO_VERSION="2022-05-26T05-48-41Z"

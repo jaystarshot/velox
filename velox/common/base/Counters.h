@@ -360,6 +360,146 @@ constexpr std::string_view kMetricStorageLocalThrottled{
 constexpr std::string_view kMetricStorageGlobalThrottled{
     "velox.storage_global_throttled_count"};
 
+
+constexpr folly::StringPiece kMetricGCSRead0To1kb{
+    "velox.gcs_read_0_1kb"};
+
+constexpr folly::StringPiece kMetricGCSRead1kbTo1mb{
+    "velox.gcs_read_1kb_1mb"};
+
+constexpr folly::StringPiece kMetricGCSRead1mbTo10mb{
+    "velox.gcs_read_1mb_10mb"};
+
+constexpr folly::StringPiece kMetricGCSRead10mb{
+    "velox.gcs_read_10mb"};
+
+constexpr folly::StringPiece kMetricHDFSRead0To1kb{
+  "velox.hdfs_read_0_1kb"};
+
+constexpr folly::StringPiece kMetricHDFSRead1kbTo1mb{
+  "velox.hdfs_read_1kb_1mb"};
+
+constexpr folly::StringPiece kMetricHDFSRead1mbTo10mb{
+  "velox.hdfs_read_1mb_10mb"};
+
+constexpr folly::StringPiece kMetricHDFSRead10mb{
+  "velox.hdfs_read_10mb"};
+
+constexpr folly::StringPiece kMetricHDFSReadSum{
+  "velox.hdfs_read_sum_bytes"};
+
+constexpr folly::StringPiece kMetricHDFSReadLatency{
+  "velox.hdfs_read_latency_ms"};
+
+constexpr folly::StringPiece kMetricGCSReadSum{
+    "velox.gcs_read_sum_bytes"};
+
+constexpr folly::StringPiece kMetricGCSReadLatency{
+    "velox.gcs_read_latency_ms"};
+
+constexpr folly::StringPiece kMetricGCSPreadCount{
+    "velox.gcs_pread_count"};
+
+constexpr folly::StringPiece kMetricGCSPreadBufCount{
+    "velox.gcs_pread_buf_count"};
+
+constexpr folly::StringPiece kMetricGCSPreadVCount{
+    "velox.gcs_preadv_count"};
+
+constexpr folly::StringPiece kMetricGCSPreadVBufferListSizeAvg{
+    "velox.gcs_preadv_buffer_list_size_avg"};
+
+constexpr folly::StringPiece kMetricGCSPreadVBytesRead{
+    "velox.gcs_preadv_bytes_read"};
+
+constexpr folly::StringPiece kMetricGCSPreadVWastedBytes{
+    "velox.gcs_preadv_wasted_bytes"};
+
+constexpr folly::StringPiece kMetricGCSBidiReadCount{
+    "velox.gcs_bidi_read_count"};
+
+constexpr folly::StringPiece kMetricGCSBidiOpenCount{
+    "velox.gcs_bidi_open_count"};
+
+constexpr folly::StringPiece kMetricParquetClacKmsRetry1Count{
+    "velox.parquet_clac_kms_retry1_count"};
+constexpr folly::StringPiece kMetricParquetClacKmsRetry2Count{
+    "velox.parquet_clac_kms_retry2_count"};
+constexpr folly::StringPiece kMetricParquetClacKmsRetry3Count{
+    "velox.parquet_clac_kms_retry3_count"};
+constexpr folly::StringPiece kMetricParquetClacKmsRetry4Count{
+    "velox.parquet_clac_kms_retry4_count"};
+constexpr folly::StringPiece kMetricParquetClacKmsFailureCount{
+    "velox.parquet_clac_kms_failure_count"};
+
+constexpr folly::StringPiece kMetricParquetClacKmsCacheHitCount{
+    "velox.parquet_clac_kms_cache_hit_count"};
+
+constexpr folly::StringPiece kMetricParquetClacKmsCacheMissCount{
+    "velox.parquet_clac_kms_cache_miss_count"};
+
+constexpr folly::StringPiece kMetricParquetClacKmsCacheCleanupCount{
+    "velox.parquet_clac_kms_cache_cleanup_count"};
+
+constexpr folly::StringPiece kMetricParquetClacKmsRequestCount{
+    "velox.parquet_clac_kms_request_count"};
+
+constexpr folly::StringPiece kMetricParquetClacKmsRequestLatency{
+    "velox.parquet_clac_kms_request_latency"};
+
+constexpr folly::StringPiece kMetricParquetFooterLengthBytes{
+    "velox.parquet_footer_length_bytes"};
+
+constexpr folly::StringPiece kMetricParquetMetadataSizeBytes{
+    "velox.parquet_metadata_size_bytes"};
+
+constexpr folly::StringPiece kMetricParquetFooterRatio{
+    "velox.parquet_footer_ratio"};
+
+constexpr folly::StringPiece kMetricParquetFooterThriftSum{
+    "velox.parquet_footer_thrift_sum"};
+
+constexpr folly::StringPiece kMetricParquetFooterThriftNegSum{
+    "velox.parquet_footer_thrift_neg_sum"};
+
+constexpr folly::StringPiece kMetricParquetClacFooterThriftNegSum{
+    "velox.parquet_clac_footer_thrift_neg_sum"};
+
+constexpr folly::StringPiece kMetricParquetClacFooterThriftSum{
+    "velox.parquet_clac_footer_thrift_sum"};
+
+
+constexpr folly::StringPiece kMetricParquetTotalColumnsSizeCleared{
+    "velox.parquet_total_columns_size_cleared"};
+
+// Parquet encoding metrics
+constexpr folly::StringPiece kMetricParquetEncodingPlain{
+    "velox.parquet_encoding_plain_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingPlainDictionary{
+    "velox.parquet_encoding_plain_dictionary_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingRle{
+    "velox.parquet_encoding_rle_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingBitPacked{
+    "velox.parquet_encoding_bit_packed_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingDeltaBinaryPacked{
+    "velox.parquet_encoding_delta_binary_packed_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingDeltaLengthByteArray{
+    "velox.parquet_encoding_delta_length_byte_array_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingDeltaByteArray{
+    "velox.parquet_encoding_delta_byte_array_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingRleDictionary{
+    "velox.parquet_encoding_rle_dictionary_count"};
+
+constexpr folly::StringPiece kMetricParquetEncodingByteStreamSplit{
+    "velox.parquet_encoding_byte_stream_split_count"};
+
 constexpr std::string_view kMetricStorageNetworkThrottled{
     "velox.storage_network_throttled_count"};
 

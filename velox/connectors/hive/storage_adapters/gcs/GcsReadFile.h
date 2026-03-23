@@ -16,6 +16,7 @@
 
 #pragma once
 
+#include <google/cloud/storage/async/client.h>
 #include <google/cloud/storage/client.h>
 #include "velox/common/file/File.h"
 
@@ -28,7 +29,9 @@ class GcsReadFile : public ReadFile {
  public:
   GcsReadFile(
       const std::string& path,
-      std::shared_ptr<::google::cloud::storage::Client> client);
+      std::shared_ptr<::google::cloud::storage::Client> client,
+      std::shared_ptr<::google::cloud::storage_experimental::AsyncClient>
+          asyncClient = nullptr);
 
   ~GcsReadFile() override;
 

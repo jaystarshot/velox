@@ -74,6 +74,10 @@ class HiveConfig {
   static constexpr const char* kGcsAuthAccessTokenProvider =
       "hive.gcs.auth.access-token-provider";
 
+  /// Use the async bidirectional gRPC API for GCS reads instead of sync.
+  static constexpr const char* kGcsReadAsyncEnabled =
+      "hive.gcs.read-async-enabled";
+
   /// Maps table field names to file field names using names, not indices.
   static constexpr const char* kOrcUseColumnNames = "hive.orc.use-column-names";
   static constexpr const char* kOrcUseColumnNamesSession =
@@ -272,6 +276,8 @@ class HiveConfig {
   std::optional<std::string> gcsMaxRetryTime() const;
 
   std::optional<std::string> gcsAuthAccessTokenProvider() const;
+
+  bool gcsReadAsyncEnabled() const;
 
   bool isOrcUseColumnNames(const config::ConfigBase* session) const;
 
